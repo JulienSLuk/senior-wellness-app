@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior Wellness App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" data-i18n="appName">Singapore Senior Wellness Helper</p>
+          <h1 data-i18n="helloName">Hello, Mr Tan</h1>
+          <p class="welcome-text" data-i18n="welcomeText">
+            Let’s eat well and stay strong today.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <select id="languageSelect" class="language-select" aria-label="Change language">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="hokkien">Hokkien</option>
+            <option value="cantonese">Cantonese</option>
+            <option value="ms">Malay</option>
+            <option value="ta">Tamil</option>
+          </select>
+          <div class="avatar">👴</div>
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-text">
+          <h2 data-i18n="heroTitle">Daily Nutrition Support</h2>
+          <p data-i18n="heroDesc">
+            Simple meal ideas, water reminders, and easy progress tracking made for seniors.
+          </p>
+          <div class="hero-actions">
+            <button class="speak-btn" id="speakBtn" data-i18n="speakBtn">🔊 Speak Aloud</button>
+            <button class="stop-speak-btn" id="stopSpeakBtn" data-i18n="stopSpeakBtn">⏹ Stop</button>
+          </div>
+        </div>
+        <div class="hero-icon">🥗</div>
+      </section>
+
+      <section class="summary-grid">
+        <div class="summary-box">
+          <span class="summary-icon">🍽️</span>
+          <span class="summary-label" data-i18n="summaryMeals">Meals</span>
+          <strong id="mealsDoneText">0 / 3</strong>
+        </div>
+
+        <div class="summary-box">
+          <span class="summary-icon">💧</span>
+          <span class="summary-label" data-i18n="summaryWater">Water</span>
+          <strong id="waterCountText">2 / 6</strong>
+        </div>
+
+        <div class="summary-box">
+          <span class="summary-icon">🥦</span>
+          <span class="summary-label" data-i18n="summaryVeg">Veg</span>
+          <strong id="vegText">Pending</strong>
+        </div>
+
+        <div class="summary-box">
+          <span class="summary-icon">🍗</span>
+          <span class="summary-label" data-i18n="summaryProtein">Protein</span>
+          <strong id="proteinText">Pending</strong>
+        </div>
+      </section>
+
+      <section class="tabs">
+        <button class="tab-btn active" data-tab="home" data-i18n="tabHome">Home</button>
+        <button class="tab-btn" data-tab="meals" data-i18n="tabMeals">Meals</button>
+        <button class="tab-btn" data-tab="reminders" data-i18n="tabReminders">Reminders</button>
+        <button class="tab-btn" data-tab="progress" data-i18n="tabProgress">Progress</button>
+        <button class="tab-btn" data-tab="camera" data-i18n="tabCamera">Camera</button>
+      </section>
+
+      <main>
+        <section class="tab-panel active" id="home">
+          <div class="card action-card">
+            <h3 data-i18n="quickActions">Quick Actions</h3>
+            <div class="actions">
+              <button class="big-btn" id="goMealsBtn" data-i18n="btnWhatEat">🍲 What should I eat?</button>
+              <button class="big-btn" id="logMealBtn" data-i18n="btnAte">✅ I have eaten</button>
+              <button class="big-btn" id="drinkWaterBtn" data-i18n="btnDrinkWater">💧 Drink water</button>
+            </div>
+          </div>
+
+          <div class="card reminder-highlight">
+            <div>
+              <p class="mini-label" data-i18n="nextReminder">Next reminder</p>
+              <h3 data-i18n="lunchReminder">Lunch at 12:30 PM</h3>
+              <p data-i18n="lunchReminderDesc">
+                Try a soft, nutritious meal with vegetables and protein.
+              </p>
+            </div>
+            <div class="clock-badge">⏰</div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="meals">
+          <div class="card">
+            <div class="section-head">
+              <div>
+                <p class="mini-label" data-i18n="todaysSuggestion">Today’s suggestion</p>
+                <h3 data-i18n="recommendedMeal">Recommended meal</h3>
+              </div>
+              <button class="small-btn" id="nextMealBtn" data-i18n="nextMeal">Next meal</button>
+            </div>
+
+            <div class="meal-card" id="mealCard">
+              <img id="mealImage" src="" alt="Meal suggestion" />
+              <div class="meal-info">
+                <h4 id="mealTitle">Meal Title</h4>
+                <p id="mealDesc">Meal description</p>
+                <div class="tags">
+                  <span data-i18n="tagEasy">Easy</span>
+                  <span data-i18n="tagHealthy">Healthy</span>
+                  <span id="mealTime">15 mins</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="primary-wide-btn" id="mealDoneBtn" data-i18n="mealDoneBtn">
+              I ate this meal
+            </button>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="reminders">
+          <div class="card">
+            <h3 data-i18n="reminderTitle">Meal & Water Reminders</h3>
+
+            <div class="reminder-list">
+              <div class="reminder-item">
+                <div>
+                  <strong data-i18n="breakfast">🌅 Breakfast</strong>
+                  <p data-i18n="breakfastDesc">Start the day with energy</p>
+                </div>
+                <span>8:00 AM</span>
+              </div>
+
+              <div class="reminder-item">
+                <div>
+                  <strong data-i18n="lunch">☀️ Lunch</strong>
+                  <p data-i18n="lunchDesc">Have vegetables and protein</p>
+                </div>
+                <span>12:30 PM</span>
+              </div>
+
+              <div class="reminder-item">
+                <div>
+                  <strong data-i18n="dinner">🌙 Dinner</strong>
+                  <p data-i18n="dinnerDesc">Keep dinner light and balanced</p>
+                </div>
+                <span>6:30 PM</span>
+              </div>
+
+              <div class="reminder-item">
+                <div>
+                  <strong data-i18n="water">💧 Water</strong>
+                  <p data-i18n="waterDesc">Drink water regularly</p>
+                </div>
+                <span data-i18n="every2Hours">Every 2 hrs</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="progress">
+          <div class="card">
+            <h3 data-i18n="progressTitle">Today’s Progress</h3>
+
+            <div class="progress-row">
+              <span data-i18n="mealsCompleted">Meals completed</span>
+              <strong id="progressMeals">0 / 3</strong>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="mealProgressFill"></div>
+            </div>
+
+            <div class="progress-row">
+              <span data-i18n="waterCups">Water cups</span>
+              <strong id="progressWater">2 / 6</strong>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="waterProgressFill"></div>
+            </div>
+
+            <div class="check-grid">
+              <div class="check-card" id="vegCard">
+                <span>🥦</span>
+                <p data-i18n="vegCheck">Vegetables</p>
+                <strong>No</strong>
+              </div>
+
+              <div class="check-card" id="proteinCard">
+                <span>🍗</span>
+                <p data-i18n="proteinCheck">Protein</p>
+                <strong>No</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="camera">
+          <div class="card">
+            <div class="section-head">
+              <div>
+                <p class="mini-label" data-i18n="cameraMini">Wellness camera</p>
+                <h3 data-i18n="cameraTitle">Presence, posture, and inactivity</h3>
+              </div>
+            </div>
+
+            <p class="camera-note" data-i18n="cameraDisclaimer">
+              This is a webcam wellness demo, not medical diagnosis.
+            </p>
+
+            <div class="camera-controls">
+              <button class="primary-wide-btn" id="startCameraBtn" data-i18n="startCamera">
+                Start Camera
+              </button>
+              <button class="secondary-wide-btn" id="stopCameraBtn" data-i18n="stopCamera">
+                Stop Camera
+              </button>
+            </div>
+
+            <div class="video-wrap">
+              <video id="video" autoplay playsinline muted></video>
+              <canvas id="overlay"></canvas>
+            </div>
+
+            <div class="camera-status-grid">
+              <div class="status-box">
+                <span class="summary-label" data-i18n="presenceLabel">Presence</span>
+                <strong id="presenceText">Waiting</strong>
+              </div>
+              <div class="status-box">
+                <span class="summary-label" data-i18n="postureLabel">Posture</span>
+                <strong id="postureText">Waiting</strong>
+              </div>
+              <div class="status-box">
+                <span class="summary-label" data-i18n="activityLabel">Activity</span>
+                <strong id="activityText">Waiting</strong>
+              </div>
+              <div class="status-box">
+                <span class="summary-label" data-i18n="confidenceLabel">Confidence</span>
+                <strong id="confidenceText">-</strong>
+              </div>
+            </div>
+
+            <div class="feedback-box">
+              <h4 data-i18n="liveFeedback">Live feedback</h4>
+              <p id="feedbackText" data-i18n="feedbackDefault">
+                Press Start Camera to begin.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-tab="home">🏠<span data-i18n="tabHome">Home</span></button>
+        <button class="nav-item" data-tab="meals">🍲<span data-i18n="tabMeals">Meals</span></button>
+        <button class="nav-item" data-tab="reminders">⏰<span data-i18n="tabReminders">Reminders</span></button>
+        <button class="nav-item" data-tab="progress">📈<span data-i18n="tabProgress">Progress</span></button>
+        <button class="nav-item" data-tab="camera">📷<span data-i18n="tabCamera">Camera</span></button>
+      </nav>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
