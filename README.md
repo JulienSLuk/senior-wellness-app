@@ -17,3 +17,10 @@ A web app designed for senior citizens in Singapore to improve nutrition, health
 
 ## Live Demo
 https://juliensluk.github.io/senior-wellness-app/
+
+
+## Further Improvements
+fix language change
+add font enlarger
+add ai meal recommendations
+add caregiver dashboard with their own login
